@@ -1,5 +1,5 @@
 import React from 'react';
-import {View , Text } from 'react-native';
+import {View , Text, Image } from 'react-native';
 import Card from "./card";
 import CardSection from "./CardSection";
 
@@ -7,17 +7,34 @@ const AlbumDetails = (props) => {
 
   return(
     <Card>
-      <CardSection>
-      <Text>{props.album.title}</Text>
-      </CardSection>
 
       <CardSection>
-      <Text>{props.album.title}</Text>
+        <View>
+          <Image
+            style ={styles.thumbnailStyle}
+            source = {{uri: props.album.thumbnail_image}}/>
+        </View>
+        <View style = {styles.headerContentStyle}>
+          <Text>{props.album.title}</Text>
+          <Text>{props.album.artist}</Text>
+        </View>
+
       </CardSection>
-      
+
     </Card>
   );
 
+};
+
+styles = {
+  headerContentStyle: {
+    flexDirection: 'column',
+    justifyContent: 'space-around'
+  },
+  thumbnailStyle: {
+    height: 50,
+    width: 50
+  }
 };
 
 export default AlbumDetails;
